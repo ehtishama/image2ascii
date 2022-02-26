@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    
-    "numjs": "^0.16.1",
+    "command-line-args": "^5.2.1",
+    "mathjs": "^10.1.1",
     "sharp": "^0.30.1"
   }
 }
