@@ -28,7 +28,10 @@ async function app(options) {
   const brightnessMatrix = calculateBrightnessMatrix(pixelMatrix, info);
 
   // replace each brightness values with an ascii charater
-  const asciiMatrix = calculateAsciiMatrix(brightnessMatrix, info);
+  const asciiMatrix = calculateAsciiMatrix(
+    brightnessMatrix,
+    { ...info, asciiPixels: options.ascii },
+  );
 
   printAsciiMatrix(asciiMatrix);
 

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { ASCII_PIXELS } = require('./constants');
 const { scaleLinear } = require('./scaleLinear');
 
 function calculateBrightnessMatrix(
@@ -27,18 +28,13 @@ function calculateBrightnessMatrix(
 
 function calculateAsciiMatrix(
   brightnessMatrix,
-  options = {
-    height: brightnessMatrix.length,
-    width: brightnessMatrix[0].width,
-  },
+  {
+    height = brightnessMatrix.length,
+    width = brightnessMatrix[0].width,
+    asciiPixels = ASCII_PIXELS,
+  } = {},
 ) {
-  let asciiPixels = '`^",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
-
-  asciiPixels = '.*#';
-
   const scale = scaleLinear({ domain: [0, 255], range: [0, asciiPixels.length] });
-
-  const { height, width } = options;
 
   const asciiMatrix = new Array(height);
 
@@ -76,8 +72,15 @@ function printAsciiMatrix(asciiMatrix) {
   // console.log(output);
 }
 
-function saveToFile(asciiMatrix, file) {
-  const output = asciiMatrix.map((row) => row.join('').concat('\n')).join('');
+function saveToFile(asciiMatrix, file, multiplyFactor = 2) {
+  const output = asciiMatrix.map(
+    (row) => row.map(
+      (pixel) => pixel.repeat(multiplyFactor),
+    )
+      .join('')
+      .concat('\n'),
+  )
+    .join('');
   fs.writeFileSync(file, output, (err) => {
     throw (err);
   });
