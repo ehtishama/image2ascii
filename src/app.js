@@ -5,6 +5,7 @@ const {
   calculateBrightnessMatrix,
   calculateAsciiMatrix,
   printAsciiMatrix,
+  saveToFile,
 } = require('./util');
 
 async function app(options) {
@@ -31,13 +32,10 @@ async function app(options) {
 
   printAsciiMatrix(asciiMatrix);
 
-  // fs.writeFile(options.out, output, err => {
-  //     if (err) console.log("Error while writing output to the file.");
-  // });
-
-  // fs.writeFile(options.o, outputInvert, err => {
-  //     if (err) console.log("Error while writing output to the file.");
-  // });
+  if (options.out) {
+    // save the file to given path
+    saveToFile(asciiMatrix, options.out);
+  }
 }
 
 module.exports = {

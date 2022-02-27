@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { scaleLinear } = require('./scaleLinear');
 
 function calculateBrightnessMatrix(
@@ -33,7 +34,7 @@ function calculateAsciiMatrix(
 ) {
   let asciiPixels = '`^",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
 
-  asciiPixels = ' -';
+  asciiPixels = '.*#';
 
   const scale = scaleLinear({ domain: [0, 255], range: [0, asciiPixels.length] });
 
@@ -69,14 +70,22 @@ function printAsciiMatrix(asciiMatrix) {
       console.log(
         asciiMatrix[i].map((asciiPixel) => asciiPixel.repeat(2)).join(''),
       );
-    }, i * 200);
+    }, 1);
   }
 
   // console.log(output);
+}
+
+function saveToFile(asciiMatrix, file) {
+  const output = asciiMatrix.map((row) => row.join('').concat('\n')).join('');
+  fs.writeFileSync(file, output, (err) => {
+    throw (err);
+  });
 }
 
 module.exports = {
   calculateAsciiMatrix,
   calculateBrightnessMatrix,
   printAsciiMatrix,
+  saveToFile,
 };
