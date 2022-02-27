@@ -8,5 +8,20 @@
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4"
+  },
+  "name": "image2ascii",
+  "version": "1.0.0",
+  "description": "Converts images to ascii art. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ascii"
+  ],
+  "author": "ehtishama",
+  "license": "MIT",
+  "bin": {
+    "ascii2image": "./index.js"
   }
 }

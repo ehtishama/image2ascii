@@ -51,20 +51,18 @@ function calculateAsciiMatrix(
 }
 
 function printAsciiMatrix(asciiMatrix) {
-  let output = '';
-
   // write to a text file
   for (let i = 0; i < asciiMatrix.length; i++) {
-    output = output.concat(
-      asciiMatrix[i]
-        .map((asciiPixel) => asciiPixel.repeat(2))
-        .join('')
-        .concat('\n'),
-    );
-
     setTimeout(() => {
       console.log(
-        asciiMatrix[i].map((asciiPixel) => asciiPixel.repeat(2)).join(''),
+        asciiMatrix[i].map((asciiPixel) => {
+          try {
+            return asciiPixel.repeat(2);
+          } catch (error) {
+            console.log('Error: ', asciiPixel);
+            return 'x';
+          }
+        }).join(''),
       );
     }, 1);
   }
