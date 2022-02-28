@@ -2,7 +2,7 @@
 
 const commandLineArgs = require('command-line-args');
 const fs = require('fs');
-const { app } = require('./src/app');
+const { app } = require('./app');
 
 // Read command line argumetns
 const optionDefinitions = [
