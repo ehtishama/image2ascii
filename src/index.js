@@ -22,7 +22,7 @@ const valid = options.help
   );
 
 if (!valid) {
-  console.log('Invalid usage: use --help for usage details');
+  console.log('Invalid usage: be sure to include --src option');
   process.exit();
 }
 
