@@ -10,14 +10,14 @@
     "eslint-plugin-import": "^2.25.4"
   },
   "name": "image2ascii",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Converts images to ascii art. ",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "ascii"
+    "ascii, ascii-art, cli, nodejs"
   ],
   "author": "ehtishama",
   "license": "MIT",
